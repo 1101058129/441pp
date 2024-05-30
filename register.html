@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <h2>Register</h2>
+    <form id="registerForm">
+        <label for="newUsername">Username:</label><br>
+        <input type="text" id="newUsername" name="newUsername"><br>
+        <label for="newPassword">Password:</label><br>
+        <input type="password" id="newPassword" name="newPassword"><br>
+        <button type="submit">Register</button>
+        <button type="button" onclick="goToLogin()">Already have an account? Login</button>
+    </form>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let newUsername = document.getElementById('newUsername').value;
+            let newPassword = document.getElementById('newPassword').value;
+
+            // Store the new user's credentials in cookies (insecure, for learning only)
+            document.cookie = "username=" + newUsername + ";";
+            document.cookie = "password=" + newPassword + ";";
+
+            alert('Registration successful! Please login.');
+            window.location.href = 'index.html'; // Redirect to login page
+        });
+        function goToLogin() {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
